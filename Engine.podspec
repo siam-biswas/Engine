@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "Engine"
-  s.version     = "1.0.0"
+  s.version     = "1.0.1"
   s.summary     = "Data driven architecture framework in Swift"
   s.homepage    = "https://github.com/siam-biswas/Engine"
   s.license     = { :type => "MIT" }
