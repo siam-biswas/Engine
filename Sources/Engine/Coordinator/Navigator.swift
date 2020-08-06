@@ -68,9 +68,9 @@ public enum Navigator:NavigatorProtocol{
         switch self{
         case let .root(to,from,_):
             
+            from?.makeKeyAndVisible()
             from?.rootViewController = nil
             from?.rootViewController = to
-            from?.makeKeyAndVisible()
             completion?()
             
         case let .push(to,from,animation):

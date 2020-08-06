@@ -12,15 +12,14 @@ import Engine
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+    
     var coordinator:Coordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        window = UIWindow()
-        coordinator = RootCoordinator(window: window).start()
+        coordinator = RootCoordinator(window: UIWindow()).start()
         return true
     }
+    
 
 }
 

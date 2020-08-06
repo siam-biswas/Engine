@@ -1,16 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "TemplateIcon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "TemplateIcon@2x.png",
+      "filename" : "TemplateIcon.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "TemplateIcon@2x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -16,7 +16,7 @@ class ___FILEBASENAMEASIDENTIFIER___: Coordinator, ___FILEBASENAMEASIDENTIFIER__
         let viewModel = ___VARIABLE_productName___ViewModel(coordinator: self, dependency: dependency)
         let controller = ___VARIABLE_productName___Controller.instantiate(viewModel)
         
-        base = .navigationController(controller.navigated())
+        base = .navigationController(BaseNavigationController(rootViewController: controller))
         navigator = .root(to: base?.navigationController, from: window, animation: true)
     }
 }

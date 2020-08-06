@@ -8,7 +8,7 @@
 
 ## What's Engine 
 
-In present days when you start building any kind of data driven or large scale applications , the first thing you did is choose a decent architecture for your development. MVC, MVP, MVI, MVVM and VIPER are architecture patterns which are commonly used. Among those considering the ease of development and usabilty alongside with testabilty MVVM is the first choice for many of us. But when working with MVVM many of us faced diffuclties with maintaing consistency. As a solution ENGINE is here to make your development with MVVM more consistent, effecient and time saving.
+In present days when we start building any kind of data driven or large scale applications, the first thing we do is choose a decent architecture for development. Some commonly used architecture patterns are MVC, MVP, MVI, MVVM and VIPER. Among those considering the ease of development and usabilty alongside with testabilty MVVM should be the first choice. But when working with MVVM many of us faced diffuclties with maintaing consistency. As a solution `Engine` is here to make your development with MVVM more consistent, effecient and time saving.
 
 
 #### `E -> Entity -> Model`
@@ -33,7 +33,7 @@ As a solution first we are introducing the Coordinator for all our navigation an
 
 For offloading the ViewModel we are adding a Dependency element where we will put all our services (API/Storage etc) and outside dependent logics.
 
-We are also adding some events for genralising our interaction and user experience flow.
+We are also adding some events property for generalizing our interaction and user experience flow.
 
 <img src="Reactive.png" width="400"/>
 
@@ -41,7 +41,9 @@ Finally for the communication between different elements (Ex. View -> ViewModel 
 
 ## Scaffolding
 
-The Best thing about ENGINE is code templating tool or in one word Scaffolding. We have some predefine feature & view based template for your quick development process. All you have to do is download & run the "install-xcode-template" file and then from your project try adding a new file.
+<img src="Scaffolding.gif" width="600"/>
+
+The Best thing about `Engine` is the code templating tool or in one word Scaffolding. We have some predefine feature & view based template for your quick development process. All you have to do is download & run the "install-xcode-template" file and then from your project try adding a new file.
 
 
 ## Installation
@@ -66,7 +68,7 @@ To use this library in your project manually you may:
 1. for Projects, just drag all the (.swift) files from (Source\Engine) to the project tree
 2. for Workspaces, include the whole Engine.xcodeproj
 
-For installing ENGINE in your project we recommend the manual process by which you can get the full controll for customizing ENGINE elements based on your preferences.
+For installing `Engine` in your project we recommend the manual process by which you can get the full controll for customizing ENGINE elements based on your preferences.
 
 ## License
 
