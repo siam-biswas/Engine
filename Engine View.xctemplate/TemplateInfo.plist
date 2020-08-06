@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Kind</key>
+	<string>Xcode.IDEFoundation.TextSubstitutionFileTemplateKind</string>
+	<key>Description</key>
+	<string>Engine View Classes</string>
+	<key>Summary</key>
+	<string>Engine View Classes</string>
+	<key>SortOrder</key>
+	<string>1</string>
+	<key>DefaultCompletionName</key>
+	<string>MyClass</string>
+	<key>Platforms</key>
+	<array>
+		<string>com.apple.platform.iphoneos</string>
+	</array>
+	<key>Options</key>
+	<array>
+		<dict>
+			<key>Identifier</key>
+			<string>productName</string>
+			<key>Required</key>
+			<true/>
+			<key>Name</key>
+			<string>View:</string>
+			<key>Description</key>
+			<string>The name of the view to create</string>
+			<key>Type</key>
+			<string>text</string>
+			<key>NotPersisted</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Identifier</key>
+			<string>viewType</string>
+			<key>Required</key>
+			<string>YES</string>
+			<key>Name</key>
+			<string>View Type:</string>
+			<key>Description</key>
+			<string>What type of view controller you need with this feature</string>
+			<key>Type</key>
+			<string>popup</string>
+			<key>Default</key>
+			<string>View</string>
+			<key>Values</key>
+			<array>
+				<string>View</string>
+				<string>TableViewCell</string>
+				<string>CollectionViewCell</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
