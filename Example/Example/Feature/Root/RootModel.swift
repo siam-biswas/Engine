@@ -10,10 +10,12 @@ import Foundation
 import Engine
 
 protocol RootModelProtocol: Model {
-    
+    var title:String { get set}
+    var action:String { get set }
 }
 
 struct RootModel: RootModelProtocol{
-    
+    var title:String
+    var action:String
 }
 

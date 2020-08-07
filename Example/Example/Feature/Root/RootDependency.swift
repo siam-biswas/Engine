@@ -15,7 +15,7 @@ protocol RootDependencyProtocol{
 }
 
 struct RootDependency: RootDependencyProtocol {
-    
+  
 }
 
 

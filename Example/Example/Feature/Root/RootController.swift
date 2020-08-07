@@ -33,6 +33,14 @@ class RootController: WrapperViewController<RootView>, RootControllerProtocol {
         }.add(to: &disposal)
         
     }
+    
+    override func setupView() {
+        super.setupView()
+    }
+    
+    override func setupLayout() {
+        super.setupLayout()
+    }
 }
 
     

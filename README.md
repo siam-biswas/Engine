@@ -8,7 +8,7 @@
 
 ## What's Engine 
 
-In present days when we start building any kind of data driven or large scale applications, the first thing we do is choose a decent architecture for development. Some commonly used architecture patterns are MVC, MVP, MVI, MVVM and VIPER. Among those considering the ease of development and usabilty alongside with testabilty MVVM should be the first choice. But when working with MVVM many of us faced difficulties with maintaing consistency. As a solution `Engine` is here to make your development with MVVM more consistent, effecient and time saving.
+In present days when we start building any kind of data driven or large scale application, the first thing we do is choose a decent architecture for development. Some commonly used architecture patterns are MVC, MVP, MVI, MVVM and VIPER. Among those considering the ease of development and usabilty alongside with testabilty MVVM should be the first choice. But when working with MVVM many of us faced difficulties with maintaing consistency. As a solution `Engine` is here to make your development with MVVM more consistent, effecient and time saving.
 
 
 #### `E -> Entity -> Model`
@@ -39,11 +39,152 @@ We are also adding some events property for generalizing our interaction and use
 
 Finally for the communication between different elements (Ex. View -> ViewModel / ViewModel -> View) , we are using the Reactive approach with data binding.
 
+
+## Engine Components
+
+### Model
+Engine has a very powerful `Model` protocol which has many useful built in functionalities. It is recomended to conform to the `Model` protocol when you are declaring any type of custom model.
+
+```swift
+
+protocol RootModelProtocol: Model {
+    var title:String { get set}
+    var action:String { get set }
+}
+
+struct RootModel: RootModelProtocol{
+    var title:String
+    var action:String
+}
+
+```
+
+### Coordinator
+For each feature or module a `Coordinator` is mandatory as it centralize the initialization and dependency management of specific module. `Engine` has a `Coordinator` protocol which provide support for navigation flow and presentation. While initializing a coordinator it is required to setup following components 
+
+#### `Base` -> Store the core object for a specific module 
+#### `Navigator` -> Manage navigation & presentation 
+
+```swift
+
+protocol RootCoordinatorProtocol: Coordinator{ }
+
+class RootCoordinator: Coordinator, RootCoordinatorProtocol{
+    
+    init(window:UIWindow?) {
+        
+        let dependency = RootDependency()
+        let viewModel = RootViewModel(coordinator: self, dependency: dependency)
+        let controller = RootController.instantiate(viewModel)
+        controller.title = "Root"
+        
+        base = .navigationController(BaseNavigationController(rootViewController: controller))
+        navigator = .root(to: base?.navigationController, from: window, animation: true)
+    }
+}
+
+
+```
+
+### Events 
+For a Data driven application module, its common that data can be in different states (Empty,Populated) and when user interect with those data they can take various actions (search,add,update,delete). So in `Engine` for every module it is recomended to declare the specific `State`s & `Action`s as enum before dig in deeper. 
+
+```swift
+
+enum RootState{
+    case normal,empty,populated,loading,error
+}
+
+enum  RootAction{
+    case next,search
+}
+
+```
+
+### View & ViewController
+
+In `Engine` most of the UI components from UIKit are wrapped with custom types. So it is recommended to use this `Engine` specific types while declaring a View or ViewController. Also this custom classes are comes with some predefine funtions for organising view configuration releated codes.
+
+
+```swift
+
+protocol RootControllerProtocol: ViewController<RootViewModelProtocol> { }
+
+class RootController: ViewController<RootViewModelProtocol>, RootControllerProtocol {
+    
+    override func setupController() {
+        super.setupController()
+    }
+    
+    override func setupViewModel() {
+        super.setupViewModel()
+    }
+   
+    override func setupReactive() {
+        super.setupReactive()
+    }
+    
+    override func setupView() {
+        super.setupView()
+    }
+    
+    override func setupLayout() {
+        super.setupLayout()
+    }
+}
+
+```
+
+### Dependency 
+
+When we modularize a specific feature in any applications, there is always some outside dependency we have to manage. `Engine` has  `Dependency` component for putting all those stuff in one place.
+
+```swift
+
+protocol RootDependencyProtocol{
+    var api:ApiService { get set }
+    var storage:StorageService { get set }
+}
+
+struct RootDependency: RootDependencyProtocol {
+   var api:ApiService
+   var storage:StorageService 
+}
+
+```
+
+### ViewModel 
+
+A `ViewModel` in `Engine` is constructed with associated `Coordinator`, `State`, `Action` & `Dependency` components. As responsibilites are shared among different components, `ViewModel` is more focused with logic implimentation and data transformation.
+
+```swift
+
+protocol RootViewModelProtocol: ViewModel<RootCoordinatorProtocol,RootDependencyProtocol,RootAction,RootState> {
+   
+}
+
+class RootViewModel: ViewModel<RootCoordinatorProtocol,RootDependencyProtocol,RootAction,RootState>, RootViewModelProtocol {
+    
+    override func initialize() {
+        super.initialize()
+    }
+    
+    override func setupReactive() {
+        super.setupReactive()
+    }
+    
+}
+
+
+```
+
+
+
 ## Scaffolding
 
 <img src="Scaffolding.gif" width="800"/>
 
-The Best thing about `Engine` is the code templating tool or in one word Scaffolding. We have some predefine feature & view based template for your quick development process. All you have to do is download & run the "install-xcode-template" file and then from your project try adding a new file.
+The Best thing about `Engine` is the code templating tool or in one word Scaffolding. We have some predefine feature & view based templates for your quick development process. All you have to do is download & run the "install-xcode-template" file and then from your project try adding a new file.
 
 
 ## Installation
