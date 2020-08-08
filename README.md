@@ -103,7 +103,7 @@ enum  RootAction{
 
 ### View & ViewController
 
-In `Engine` most of the UI components from UIKit are wrapped with custom types. So it is recommended to use this `Engine` specific types while declaring a View or ViewController. Also this custom classes are comes with some predefine funtions for organising view configuration releated codes.
+In `Engine` most of the UI components from UIKit are wrapped with custom types. So it is recommended to use this `Engine` specific types while declaring a View or ViewController. Also this custom classes are comes with some predefine functions for organising view configuration releated codes.
 
 
 ```swift
@@ -178,6 +178,33 @@ class RootViewModel: ViewModel<RootCoordinatorProtocol,RootDependencyProtocol,Ro
 
 ```
 
+### Reactive
+
+For communication between different components `Engine` use a built in closure based reactive utility which has some very basic elements like `Observable` , `Bindable` & `Disposable`
+
+
+```swift
+
+// intialize a data as Observable
+
+var data:Observable<String> = Observable()
+
+// intialize a Disposable element 
+
+var disposal:Disposal = []
+
+// setup an observer for data
+
+data.observe { [weak self] value in
+   // do something with data
+}.add(to: &disposal)
+
+
+// bind data with a UI element
+
+textField.bind(data)
+
+```
 
 
 ## Scaffolding
@@ -206,10 +233,31 @@ end
 
 To use this library in your project manually you may:  
 
-1. for Projects, just drag all the (.swift) files from (Source\Engine) to the project tree
+1. for Projects, just drag all the (.swift) files from (Sources\Engine) to the project tree
 2. for Workspaces, include the whole Engine.xcodeproj
 
-For installing `Engine` in your project we recommend the manual process by which you can get the full controll for customizing ENGINE elements based on your preferences.
+For installing `Engine` in your project we recommend the manual process by which you can get the full controll for customizing `Engine` elements based on your preferences.
+
+
+## Something to Remember
+
+If you are building an application which prints "Hello World" or similar kinds of stuff in couple of pages, please dont use  `Engine`. 
+
+The sole purpose of `Engine` is to generalize complex module or features of a large scale application so that the velocity and quality of development get increase. 
+
+
+## Reference & Inspiration
+
+Check out this awesome articles and repos which were really helpfull while creating `Engine`.
+
+- [Protocol Oriented MVVM](https://medium.com/@thibault.wittemberg/protocol-oriented-tips-for-mvvm-in-swift-5e34b6fc0eca)
+- [Observable](https://github.com/roberthein/Observable)
+- [SimpleTwoWayBindingIOS](https://github.com/manishkkatoch/SimpleTwoWayBindingIOS)
+- [BlockBasedSelector](https://gist.github.com/cprovatas/98ff940140c8744c4d1f3bcce7ba4543)
+- [Scaffolding](https://medium.com/overapp-ios/create-xcode-templates-c968d4b43f7b)
+- [Swift Tips](https://github.com/vincent-pradeilles/swift-tips)
+
+
 
 ## License
 

@@ -40,6 +40,7 @@ class RootView: View<RootViewModelProtocol>, RootViewProtocol{
    
     override func setupReactive() {
         super.setupReactive()
+    
         
         button.addTarget(selector, action: Selector{ [weak self] in
             self?.viewModel.action.value = .next

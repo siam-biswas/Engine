@@ -11,8 +11,7 @@ import UIKit
 import Engine
 
 protocol RootControllerProtocol: WrapperViewController<RootView> {
-     func execute(_ value:RootAction)
-     func navigateNext()
+    
 }
 
 class RootController: WrapperViewController<RootView>, RootControllerProtocol {
@@ -28,10 +27,6 @@ class RootController: WrapperViewController<RootView>, RootControllerProtocol {
     override func setupReactive() {
         super.setupReactive()
         
-        viewModel.action.observe { [weak self] value in
-            self?.execute(value)
-        }.add(to: &disposal)
-        
     }
     
     override func setupView() {
@@ -44,17 +39,4 @@ class RootController: WrapperViewController<RootView>, RootControllerProtocol {
 }
 
     
-extension RootController{
-    
-    func execute(_ value:RootAction){
-        switch value{
-        case .next:
-            self.navigateNext()
-        }
-    }
-    
-    func navigateNext(){
-        self.viewModel.coordinator.next(coordinator: NextCoordinator(from: self), completion: nil)
-    }
-}
 

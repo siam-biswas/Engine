@@ -97,8 +97,8 @@
 		2A689787249D3DAE00E6A687 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				2ABAD28B24CE076D00A1978C /* Next */,
 				2A689788249D3DB500E6A687 /* Root */,
+				2ABAD28B24CE076D00A1978C /* Next */,
 			);
 			path = Feature;
 			sourceTree = "<group>";

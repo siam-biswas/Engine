@@ -11,7 +11,7 @@ import UIKit
 import Engine
 
 protocol RootCoordinatorProtocol: Coordinator{
-    
+    func navigateNext()
 }
 
 class RootCoordinator: Coordinator, RootCoordinatorProtocol{
@@ -25,6 +25,11 @@ class RootCoordinator: Coordinator, RootCoordinatorProtocol{
         
         base = .navigationController(BaseNavigationController(rootViewController: controller))
         navigator = .root(to: base?.navigationController, from: window, animation: true)
+    }
+    
+    func navigateNext(){
+        guard let from = self.base?.viewController else { return }
+        self.next(coordinator: NextCoordinator(from: from), completion: nil)
     }
 }
 
